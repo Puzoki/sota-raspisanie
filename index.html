@@ -69,12 +69,6 @@
             border-color: #0062cc;
         }
         @media screen and (max-width: 1000px) {
-            body {
-                background-size: auto;
-                background-position: center;
-                background-attachment: fixed;
-                background-repeat: no-repeat;
-            }
             .container {
                 width: 100%;
                 margin: 0;
@@ -87,7 +81,7 @@
             }
             img {
                 width: 100%;
-                margin: 0;
+                margin-top: 10px;
                 border-radius: 0.9rem;
             }
             button {
@@ -110,7 +104,7 @@
         }
     </style>
 </head>
-<body>
+<body style="width: 100%; height: 100%;">
     <div class="container">
         <div class="btn-block">
             <button onclick="rasp()">РАСПИСАНИЕ</button>
@@ -127,24 +121,30 @@
             'https://sun9-34.userapi.com/impg/QVAWWlZkmygneNGwfk7KY60iROKPz-RW01RZpQ/kpi_lTSfy1o.jpg?size=1280x960&quality=96&sign=ebe97f86c3ae1ed421ff456dc22b26c4&type=album',
             'https://sun9-67.userapi.com/impg/UZ4j4SX627VgZLSnqBSQWkiV9MCzLFHui9DF8A/Wpj0rfTaZK8.jpg?size=2560x1734&quality=96&sign=df74499670a977470f14743d8ecf7f90&type=album',
             'https://sun9-47.userapi.com/impg/-TMvELhHXlsTPbFnbworATx4GYRoMmFSjta79w/RBf68wjvLxg.jpg?size=2560x1632&quality=95&sign=17031bcb1e065e411bdf5886a28f6cfe&type=album',
-            'https://sun1-29.userapi.com/impg/LOCe7hnbWkZhpDm_jObahQ8EHuYatOSQ123TvA/hUztvr6JmoU.jpg?size=2160x2160&quality=96&sign=ad30f59da952603a777c7fb23a14f0dd&type=album',
-            'https://sun1-30.userapi.com/impg/J8aIaJYAugXZHWmQxoUrjP0KZeDxDO2VXUXh9w/lB95bOk1Wlo.jpg?size=1100x1100&quality=96&sign=411dfba439cf81f2468a919ba61dee9f&type=album',
-            'https://sun1-99.userapi.com/impg/UDWXhOYJspMXFXAKDeCrUoav-NTZGmegK1aryA/lDdkELpRv7g.jpg?size=1254x2160&quality=96&sign=7ff3b64e5543925cfa6762f9f0662117&type=album',
-            'https://sun9-34.userapi.com/impg/GIucCW5V6xeIrwWT8FpQiCpiPz4JO2Nc0fWxaA/-I9HZfd-iHY.jpg?size=850x1202&quality=96&sign=afe781904098dcab223d969b0e84881c&type=album',
-            'https://sun1-92.userapi.com/impg/Geyiq-0ILSHy23A6ZtaVI7CBfsnwghk5O_QJow/azjv1j4GygY.jpg?size=1000x1000&quality=96&sign=11347d8bc882802c2840d59f16aa7556&type=album',
             'https://sun1-90.userapi.com/impg/YS0hn3ckYY5EPRor238-O3BdXoZTqEQEXeC7Bw/F9RYlW58Gz4.jpg?size=1500x1080&quality=96&sign=9227ee5163614239eacaba23856db24d&type=album',
                         
         ]
+        let picMobile = [
+            'https://sun1-29.userapi.com/impg/LOCe7hnbWkZhpDm_jObahQ8EHuYatOSQ123TvA/hUztvr6JmoU.jpg?size=2160x2160&quality=96&sign=ad30f59da952603a777c7fb23a14f0dd&type=album',
+            'https://sun1-30.userapi.com/impg/J8aIaJYAugXZHWmQxoUrjP0KZeDxDO2VXUXh9w/lB95bOk1Wlo.jpg?size=1100x1100&quality=96&sign=411dfba439cf81f2468a919ba61dee9f&type=album',
+            'https://sun1-92.userapi.com/impg/Geyiq-0ILSHy23A6ZtaVI7CBfsnwghk5O_QJow/azjv1j4GygY.jpg?size=1000x1000&quality=96&sign=11347d8bc882802c2840d59f16aa7556&type=album',
+            'https://sun9-34.userapi.com/impg/GIucCW5V6xeIrwWT8FpQiCpiPz4JO2Nc0fWxaA/-I9HZfd-iHY.jpg?size=850x1202&quality=96&sign=afe781904098dcab223d969b0e84881c&type=album',
+            'https://sun1-99.userapi.com/impg/UDWXhOYJspMXFXAKDeCrUoav-NTZGmegK1aryA/lDdkELpRv7g.jpg?size=1254x2160&quality=96&sign=7ff3b64e5543925cfa6762f9f0662117&type=album',
 
+        ]
         function getRandomInRange(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min
         }
-        console.log(document.querySelector('body').offsetWidth)
-        console.log(document.querySelector('body').clientWidth)
 
-        let num = getRandomInRange(0, pic.length-1)
-        document.querySelector('body').style.backgroundImage = `url(${pic[num]})`
-
+        if (window.screen.width>window.screen.height) {
+            let num = getRandomInRange(0, pic.length-1)
+            document.querySelector('body').style.backgroundImage = `url(${pic[num]})`
+        }
+        else {
+            let num = getRandomInRange(0, picMobile.length-1)
+            document.querySelector('body').style.backgroundImage = `url(${picMobile[num]})`
+        }
+        
         function rasp() {
             document.querySelector('#rasp').style.display = 'block'
             document.querySelector('#izm').style.display = 'none'
